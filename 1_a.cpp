@@ -57,6 +57,34 @@ void reverseArray(int arr[], int n) {
     cout << "Array Reversed." << endl;
 }
 
+int indInsertion(int arr[],int n,int capacity){
+	int element,index;
+	cout<<"Enter the index were you want to insert : ";
+	cin>>index;
+	cout<<"Enter the element you want to insert : ";
+	cin>>element;
+	if(n>=capacity){
+		return -1;
+		cout<<"No space to insert another element";
+	}
+	for(int i=n-1;i>=index;i--){
+		arr[i+1]=arr[i];
+	}
+	arr[index]=element;
+	cout<<"Insertion done Successfully\n";
+	return 1;
+}
+
+void indDeletion(int arr[],int n){
+	int index;
+	cout<<"Enter the index which you want to delete : ";
+	cin>>index;
+	for(int i=index;i<n-1;i++){
+		arr[i]=arr[i+1];
+	}
+	cout<<"Deletion done Successfully\n";
+}
+
 int main() {
     int arr[100],n = 0,choice;
     do {
@@ -66,7 +94,9 @@ int main() {
         cout << "3. Search element\n";
         cout << "4. Sort array\n";
         cout << "5. Reverse array\n";
-        cout << "6. Exit\n";
+        cout << "6. Insertion in array\n";
+        cout << "7. Deletion in array\n";
+        cout << "8. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
         switch(choice) {
@@ -88,12 +118,22 @@ int main() {
                 displayArray(arr, n);
                 break;
             case 6:
+            	indInsertion(arr,n,100);
+            	n +=1;
+            	displayArray(arr,n);
+            	break;
+            case 7:
+            	indDeletion(arr,n);
+            	n-=1;
+            	displayArray(arr,n);
+            	break;
+            case 8:
                 cout << "Exiting program." << endl;
                 break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
         }
-    } while (choice != 6);
+    } while (choice != 8);
     return 0;
 }
 
