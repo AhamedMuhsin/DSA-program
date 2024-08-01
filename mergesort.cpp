@@ -52,7 +52,7 @@ int main() {
     do{
         cout << "\nMenu:\n";
         cout << "1. Input first array\n";
-        cout << "2. Display second array\n";
+        cout << "2. Display first array\n";
         cout << "3. Input second array\n";
         cout << "4. Display second array\n";
         cout << "5. Merge Sort array\n";
