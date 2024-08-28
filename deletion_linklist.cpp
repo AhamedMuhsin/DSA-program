@@ -30,6 +30,39 @@ class LinkedList{
             third->next=fourth;
             fourth->next=NULL;
         }
+        void deleteAtFirst(){
+            Node* ptr = this->head;
+            this->head = head->next;
+            free(ptr);
+        }
+        void deleteAtIndex(int index){
+            Node* ptr = this->head;
+            if(index==0){
+                this->head = head->next;
+                free(ptr);
+            }
+            Node* current = head->next;
+            int i = 0;
+            while(current != NULL){
+                if(i == index-1){
+                    ptr->next = current->next;
+                }
+                ptr = ptr->next;
+                current = current->next;
+                i++;
+            }
+            free(current);
+        }
+        void deleteAtEnd(){
+            Node* ptr = this->head;
+            Node* current = head->next;
+            while(current->next != NULL){
+                ptr=ptr->next;
+                current=current->next;
+            }
+            ptr->next=NULL;
+            free(current);
+        }
         void displayLinkedList(){
             Node* current = this->head;
             while(current != NULL){
@@ -37,47 +70,14 @@ class LinkedList{
                 current = current->next;
             }
         }
-        void insetAtFirst(){
-            Node* ptr = new Node(0);
-            ptr->next = this->head;
-            this->head = ptr;
-        }
-        void insertAtEnd(){
-            Node* ptr = new Node(50);
-            Node* current = this->head;
-            while(current->next != NULL){
-                current = current->next;
-            }
-            current->next = ptr;
-            ptr->next=NULL;
-        }
-        void insertAtIndex(int index){
-            Node* ptr = new Node(25);
-            if(index==0){
-                ptr->next = this->head;
-                this->head=ptr;
-            }
-            Node* current = this->head;
-            int i = 0;
-            while(current != NULL){
-                if(i == index-1){
-                    ptr->next = current->next;
-                    current->next=ptr;
-                }
-                current = current->next;
-                i++;
-            }
-        }
 };
 
 int main(){
     LinkedList l;
-    cout<<"Linked list before insertion \n";
+    cout<<"element before deletion : "<<"\n";
     l.createdLinkedList();
     l.displayLinkedList();
-    cout<<"linked list after insertion \n";
-    l.insertAtIndex(0);
+    l.deleteAtIndex(1);
+    cout<<"element after deletion : "<<"\n";
     l.displayLinkedList();
-
-    return 0;
 }
