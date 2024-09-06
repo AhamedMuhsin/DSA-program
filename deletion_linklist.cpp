@@ -33,13 +33,13 @@ class LinkedList{
         void deleteAtFirst(){
             Node* ptr = this->head;
             this->head = head->next;
-            free(ptr);
+            // free(ptr);
         }
         void deleteAtIndex(int index){
             Node* ptr = this->head;
             if(index==0){
                 this->head = head->next;
-                free(ptr);
+                // free(ptr);
             }
             Node* current = head->next;
             int i = 0;
@@ -51,7 +51,7 @@ class LinkedList{
                 current = current->next;
                 i++;
             }
-            free(current);
+            // free(current);
         }
         void deleteAtEnd(){
             Node* ptr = this->head;
@@ -61,7 +61,7 @@ class LinkedList{
                 current=current->next;
             }
             ptr->next=NULL;
-            free(current);
+            // free(current);
         }
         void displayLinkedList(){
             Node* current = this->head;
@@ -77,7 +77,7 @@ int main(){
     cout<<"element before deletion : "<<"\n";
     l.createdLinkedList();
     l.displayLinkedList();
-    l.deleteAtIndex(1);
+    l.deleteAtIndex(3
     cout<<"element after deletion : "<<"\n";
     l.displayLinkedList();
 }
