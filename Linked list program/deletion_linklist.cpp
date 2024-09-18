@@ -74,10 +74,38 @@ class LinkedList{
 
 int main(){
     LinkedList l;
-    cout<<"element before deletion : "<<"\n";
+    int choice;
     l.createdLinkedList();
     l.displayLinkedList();
-    l.deleteAtIndex(3
-    cout<<"element after deletion : "<<"\n";
-    l.displayLinkedList();
+    do{
+        cout<<"1. Delete at first\n";        
+        cout<<"2. Delete at any position\n";        
+        cout<<"3. Delete at end\n";        
+        cout<<"4. Exit\n";
+        cout<<"Enter your choice : ";
+        cin>>choice;
+        switch(choice){
+            case 1:
+                l.deleteAtFirst();
+                l.displayLinkedList();
+                break;
+            case 2:
+                int index;
+                cout<<"Enter the position where you want to insert : ";
+                cin>>index;
+                l.deleteAtIndex(index);
+                l.displayLinkedList();
+                break;
+            case 3:
+                l.deleteAtEnd();
+                l.displayLinkedList();
+                break;
+            case 4:
+                cout << "Exiting program." << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    } while(choice!=4);
+    return 0;
 }

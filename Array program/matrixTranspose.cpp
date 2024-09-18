@@ -18,7 +18,7 @@ void displayMatrix(int matrix[10][10], int row, int col) {
         }
         cout << endl;
     }
-}
+} 
 
 void transposeMatrix(int matrix[10][10],int tranpose[10][10], int row, int col) {
     for (int i = 0; i < row; ++i) {

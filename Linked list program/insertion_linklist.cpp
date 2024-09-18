@@ -37,13 +37,13 @@ class LinkedList{
                 current = current->next;
             }
         }
-        void insetAtFirst(){
-            Node* ptr = new Node(0);
+        void insetAtFirst(int data){
+            Node* ptr = new Node(data);
             ptr->next = this->head;
             this->head = ptr;
         }
-        void insertAtEnd(){
-            Node* ptr = new Node(50);
+        void insertAtEnd(int data){
+            Node* ptr = new Node(data);
             Node* current = this->head;
             while(current->next != NULL){
                 current = current->next;
@@ -51,8 +51,8 @@ class LinkedList{
             current->next = ptr;
             ptr->next=NULL;
         }
-        void insertAtIndex(int index){
-            Node* ptr = new Node(25);
+        void insertAtIndex(int index,int data){
+            Node* ptr = new Node(data);
             if(index==0){
                 ptr->next = this->head;
                 this->head=ptr;
@@ -72,12 +72,43 @@ class LinkedList{
 
 int main(){
     LinkedList l;
-    cout<<"Linked list before insertion \n";
+    int choice,data,index;
     l.createdLinkedList();
     l.displayLinkedList();
-    cout<<"linked list after insertion \n";
-    l.insertAtIndex(0);
-    l.displayLinkedList();
-
+    do{
+        cout<<"1. Insert at first\n";        
+        cout<<"2. Insert at any position\n";        
+        cout<<"3. Insert at end\n";        
+        cout<<"4. Exit\n";
+        cout<<"Enter your choice : ";
+        cin>>choice;
+        switch(choice){
+            case 1:
+                cout<<"Enter the data to be inserted at first position : ";
+                cin>>data;
+                l.insetAtFirst(data);
+                l.displayLinkedList();
+                break;
+            case 2:
+                cout<<"Enter the position where you want to insert : ";
+                cin>>index;
+                cout<<"Enter the data to to inserted at any position : ";
+                cin>>data;
+                l.insertAtIndex(index,data);
+                l.displayLinkedList();
+                break;
+            case 3:
+                cout<<"Enter the data to inserted at end : ";
+                cin>>data;
+                l.insertAtEnd(data);
+                l.displayLinkedList();
+                break;
+            case 4:
+                cout << "Exiting program." << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    } while(choice!=4);
     return 0;
 }
