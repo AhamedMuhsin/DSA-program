@@ -60,7 +60,7 @@ int main(){
     LinkedList l;
     l.createdLinkedList();
     l.displayLinkedList(l.getHead());
-    cout<<"linked list after copying"<<"\n"; // You need to add a getHead() function to LinkedList class
+    cout<<"linked list after copying"<<"\n";
     Node* newHead = l.copyingLinkedlist();
     LinkedList l2;
     l2.displayLinkedList(newHead);
