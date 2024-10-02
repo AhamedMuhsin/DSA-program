@@ -87,7 +87,10 @@ class Stack{
             int i = 0, j = 0;
             char *prefix = new char[100];
             while(reversed[i]!='\0'){
-                if(!isOperator(reversed[i])){
+                if(reversed[i]=='('||reversed[i]==')'){
+                    i++;
+                }
+                else if(!isOperator(reversed[i])){
                     prefix[j]=reversed[i];
                     j++;
                     i++;    

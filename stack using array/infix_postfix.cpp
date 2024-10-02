@@ -83,19 +83,27 @@ class Stack{
             int i = 0, j = 0;
             char *postfix = new char[100];
             while(infix[i]!='\0'){
-                if(!isOperator(infix[i])){
-                    postfix[j]=infix[i];
-                    j++;
-                    i++;    
-                }
-                else{
-                    if(precedence(infix[i])>precedence(stackTop())){
-                        push(infix[i]);
-                        i++;
-                    }else{
+                if(infix[i]=='('){
+                    push(infix[i]);
+                    i++;
+                }else if(infix[i]==')'){
+                    while(stackTop()!='('){
                         postfix[j]=pop();
                         j++;
                     }
+                    pop(); 
+                    i++;
+                }else if(!isOperator(infix[i])){
+                    postfix[j]=infix[i];
+                    j++;
+                    i++;    
+                }else{
+                    while(!isEmpty() && stackTop()!='(' && precedence(infix[i])<=precedence(stackTop())){
+                        postfix[j]=pop();
+                        j++;
+                    }
+                    push(infix[i]);
+                    i++;
                 }
             }
             while(!isEmpty()){
